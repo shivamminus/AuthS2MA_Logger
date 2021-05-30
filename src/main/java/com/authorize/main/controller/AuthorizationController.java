@@ -49,7 +49,7 @@ public class AuthorizationController {
 	@PostMapping("/login")
 	public ResponseEntity<Object> createAuthorizationToken(@RequestBody AuthenticationRequest authenticationRequest)
 			throws LoginException, LoginCredentialNotValid {
-		logger.info(authenticationRequest.toString());
+//		logger.info(authenticationRequest.toString());
 
 		if (authenticationRequest == null || authenticationRequest.getUserName() == null
 				|| authenticationRequest.getPassword() == null) {
