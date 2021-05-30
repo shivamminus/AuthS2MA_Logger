@@ -13,7 +13,7 @@ public class AuthorizationS2MaApplication {
 
 	public static void main(String[] args) {        
 		//Increase Timeout of Server so it will not give  504 error
-        System.setProperty("server.connection-timeout","120000");
+//        System.setProperty("server.connection-timeout","120000");
         logger.info("Starting Authorization Server");
 		SpringApplication.run(AuthorizationS2MaApplication.class, args);
 	}
