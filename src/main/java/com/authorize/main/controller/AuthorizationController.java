@@ -28,7 +28,7 @@ import com.authorize.main.util.JwtUtil;
 @RestController
 @RequestMapping(value = "/auth")
 public class AuthorizationController {
-	
+
 	private static Logger logger = LoggerFactory.getLogger(AuthorizationController.class);
 
 	@Autowired
@@ -114,13 +114,12 @@ public class AuthorizationController {
 
 	/*
 	 * Test Microservice Connection
+	 * 
+	 * @GetMapping(path = "/check-connection") public ResponseEntity<String>
+	 * healthCheck() {
+	 * 
+	 * logger.info("Authorization Microservice is Up and Running....");
+	 * 
+	 * return new ResponseEntity<>("OK", HttpStatus.OK); }
 	 */
-	@GetMapping(path = "/check-connection")
-	public ResponseEntity<String> healthCheck() {
-
-		logger.info("Authorization Microservice is Up and Running....");
-
-		return new ResponseEntity<>("OK", HttpStatus.OK);
-	}
-
 }
