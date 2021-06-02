@@ -5,8 +5,8 @@ spring:
     name: AUTH-SERVICE
   datasource:
     driver-name: com.mysql.cj.jdbc.Driver
-    password: s2ma
-    url: jdbc:mysql://ec2-18-217-21-37.us-east-2.compute.amazonaws.com:3306/order_return
+    password: pod-3-s2ma
+    url: jdbc:mysql://ij018-pod3-mfpe.ccoanq845ewc.us-east-2.rds.amazonaws.com:3306/order_return
     username: root
   jpa:
     generate-ddl: true
