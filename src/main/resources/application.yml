@@ -3,19 +3,36 @@ server:
 spring:
   application:
     name: AUTH-SERVICE
+#  datasource:
+#    driver-name: com.mysql.cj.jdbc.Driver
+#    password: pod-3-s2ma
+#    url: jdbc:mysql://ij018-pod3-mfpe.ccoanq845ewc.us-east-2.rds.amazonaws.com:3306/order_return
+#    username: root
   datasource:
-    driver-name: com.mysql.cj.jdbc.Driver
-    password: pod-3-s2ma
-    url: jdbc:mysql://ij018-pod3-mfpe.ccoanq845ewc.us-east-2.rds.amazonaws.com:3306/order_return
-    username: root
+    driverClassName: org.h2.Driver
+    password: 
+    url: jdbc:h2:mem:order_return
+    username: sa
+  h2:
+    console:
+      enabled: true
   jpa:
-    generate-ddl: true
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
+
+  
+#  jpa:
+#    generate-ddl: true
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#    show-sql: true
+#    
+    
 eureka:
   client:
     register-with-eureka: true
@@ -24,3 +41,4 @@ eureka:
       default-zone: http://localhost:8761/eureka/
   instance:
     hostname: localhost
+  
