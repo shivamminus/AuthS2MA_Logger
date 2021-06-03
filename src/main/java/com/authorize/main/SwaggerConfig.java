@@ -22,7 +22,7 @@ public class SwaggerConfig {
 	 */
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
+		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage( "com.componentxProcessing.main" ))
 				.paths(PathSelectors.any()).build();
 	}
 }

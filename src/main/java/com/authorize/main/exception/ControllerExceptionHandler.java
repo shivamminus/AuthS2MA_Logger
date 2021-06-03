@@ -29,11 +29,19 @@ public class ControllerExceptionHandler {
 	/*
 	* Exception for Improper Parameters passed 
 	*/
-	@ExceptionHandler(value = { LoginCredentialNotValid.class, Exception.class })
+	@ExceptionHandler(value = { LoginCredentialNotValid.class })
 	public ResponseEntity<ErrorMessage> invalidLoginCredentialHandel(Exception ex, WebRequest request) {
 		final Date date = new Date();
 		ErrorMessage message = new ErrorMessage(400, date, ex.getMessage());
 
 		return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(value = {Exception.class })
+	public ResponseEntity<ErrorMessage> somethingWentWrong(Exception ex, WebRequest request) {
+		final Date date = new Date();
+		ErrorMessage message = new ErrorMessage(500, date, ex.getMessage());
+
+		return new ResponseEntity<ErrorMessage>(message, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
