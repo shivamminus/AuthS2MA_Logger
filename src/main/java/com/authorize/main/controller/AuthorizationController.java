@@ -49,15 +49,12 @@ public class AuthorizationController {
 	@PostMapping("/login")
 	public ResponseEntity<Object> createAuthorizationToken(@RequestBody AuthenticationRequest authenticationRequest)
 			throws LoginException, LoginCredentialNotValid {
-//		logger.info(authenticationRequest.toString());
 
 		if (authenticationRequest == null || authenticationRequest.getUserName() == null
 				|| authenticationRequest.getPassword() == null) {
-			return new ResponseEntity<>("Login Details are not provided as per Requirement", HttpStatus.BAD_REQUEST);
-			/*
-			 * throw new
-			 * LoginCredentialNotValid("Login Details are not provided as per Requirement");
-			 */
+
+			throw new LoginCredentialNotValid("Login Details are not provided as per Requirement");
+
 		}
 
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUserName());
@@ -71,7 +68,6 @@ public class AuthorizationController {
 		} else {
 			logger.info("END - [login(customerLoginCredentials)]");
 			return new ResponseEntity<>("Invalid Username or Password", HttpStatus.FORBIDDEN);
-			/* throw new LoginException("Invalid Username or Password"); */
 		}
 	}
 
@@ -112,14 +108,4 @@ public class AuthorizationController {
 
 	}
 
-	/*
-	 * Test Microservice Connection
-	 * 
-	 * @GetMapping(path = "/check-connection") public ResponseEntity<String>
-	 * healthCheck() {
-	 * 
-	 * logger.info("Authorization Microservice is Up and Running....");
-	 * 
-	 * return new ResponseEntity<>("OK", HttpStatus.OK); }
-	 */
 }
